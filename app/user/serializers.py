@@ -19,10 +19,10 @@ class UserSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Update a user, setting the password correctly and return it"""
         password = validated_data.pop('password', None)
-        # allow user to optionally provide password
+        # set the default value of dict field 'password' as None
         user = super().update(instance, validated_data)
 
-        if password:
+        if password:  # allow user to optionally provide password
             user.set_password(password)
             user.save()
 

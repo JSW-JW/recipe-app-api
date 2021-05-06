@@ -14,7 +14,7 @@ class CommandTests(TestCase):
             call_command('wait_for_db')
             self.assertEqual(gi.call_count, 1)
 
-    @patch('time.sleep')  # change return value of time.sleep.
+    @patch('time.sleep')  # change return value of time.sleep()
     # prevent the slowing down of our test execution.
     def test_wait_for_db(self, ts):
         """Test waiting for db"""
